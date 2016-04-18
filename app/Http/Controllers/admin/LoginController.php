@@ -6,6 +6,7 @@ use App\Models\AdminModel;
 use \Illuminate\Support\Facades\Session;
 use \Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\admin\AdminlogController;
+use DateTime;
 
 class LoginController extends Controller {
 
@@ -54,6 +55,12 @@ class LoginController extends Controller {
 		    $sessiondata['last_logon']=$adminlogin[0]['last_logon'];
 		    
 		    Session::put($sessiondata);
+
+			//Updating the time of login
+			$now = new DateTime();
+			$update_lastlogon = AdminModel::find($adminlogin[0]['id']);
+			$update_lastlogon->last_logon = $now;
+			$update_lastlogon->save();
 
 		    return redirect('admin/admindashboard');
 		      
