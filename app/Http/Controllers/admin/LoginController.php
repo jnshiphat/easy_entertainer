@@ -56,7 +56,7 @@ class LoginController extends Controller {
 		    
 		    Session::put($sessiondata);
 
-			//Updating the time of login
+			//Updating the time of login (last login)
 			$now = new DateTime();
 			$update_lastlogon = AdminModel::find($adminlogin[0]['id']);
 			$update_lastlogon->last_logon = $now;
