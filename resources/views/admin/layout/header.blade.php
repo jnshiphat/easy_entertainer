@@ -15,8 +15,6 @@
 <link href="{{URL::to('../resources/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')}}" rel="stylesheet" type="text/css"/>
 <!-- END GLOBAL MANDATORY STYLES -->
 
-
-
 <!-- BEGIN PAGE LEVEL STYLES -->
 <link href="{{URL::to('../resources/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.css')}}" rel="stylesheet" type="text/css"/>
 <link href="{{URL::to('../resources/assets/global/plugins/fancybox/source/jquery.fancybox.css')}}" rel="stylesheet"/>
@@ -39,6 +37,7 @@
 
 <!-- BEGIN PAGE STYLES -->
 <link href="{{URL::to('../resources/assets/admin/pages/css/tasks.css')}}" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" type="text/css" href="{{URL::to('../resources/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css')}}"/>
 <!-- END PAGE STYLES -->
 
 <!-- BEGIN PAGE LEVEL STYLES -->

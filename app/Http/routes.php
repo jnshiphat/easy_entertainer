@@ -33,6 +33,7 @@ Route::group(array('prefix'=>'admin'),function(){
 	Route::get('/admincreate', 'admin\DashboardController@adminuser_create');
 	Route::get('/adminmanage', 'admin\DashboardController@adminuser_management');
 	
+	Route::post('/adminoperations', 'admin\DashboardController@adminuser_operations');
 	Route::post('/verify', 'admin\LoginController@login_verify');
 	Route::post('/admincreate', 'admin\LoginController@admin_create');
 });

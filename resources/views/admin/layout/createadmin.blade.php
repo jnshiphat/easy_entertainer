@@ -126,14 +126,3 @@
 					<!-- END VALIDATION STATES-->
 				</div>
 			</div>
-
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/jquery-validation/js/jquery.validate.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/jquery-validation/js/additional-methods.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/select2/select2.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/bootstrap-wysihtml5/wysihtml5-0.3.0.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/ckeditor/ckeditor.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/global/plugins/bootstrap-markdown/lib/markdown.js')}}"></script>
-<script type="text/javascript" src="{{URL::to('../resources/assets/admin/pages/scripts/form-validation.js')}}"></script>

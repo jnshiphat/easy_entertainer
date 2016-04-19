@@ -16,12 +16,25 @@ var TableEditable = function () {
         function editRow(oTable, nRow) {
             var aData = oTable.fnGetData(nRow);
             var jqTds = $('>td', nRow);
-            jqTds[0].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[0] + '">';
-            jqTds[1].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[1] + '">';
-            jqTds[2].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[2] + '">';
-            jqTds[3].innerHTML = '<input type="text" class="form-control input-small" value="' + aData[3] + '">';
-            jqTds[4].innerHTML = '<a class="edit" href="">Save</a>';
-            jqTds[5].innerHTML = '<a class="cancel" href="">Cancel</a>';
+            jqTds[0].innerHTML = '<input name="username" type="text" class="form-control input-small" value="' + aData[0] + '">';
+            jqTds[1].innerHTML = '<input name="first_name" type="text" class="form-control input-small" value="' + aData[1] + '">';
+            jqTds[2].innerHTML = '<input name="last_name" type="text" class="form-control input-small" value="' + aData[2] + '">';
+            jqTds[3].innerHTML = '<input name="email" type="text" class="form-control input-small" value="' + aData[3] + '">';
+            //jqTds[4].innerHTML = '<input name="role_id" type="text" class="form-control input-small" value="' + aData[4] + '">';
+            if(aData[4]=="Super Admin") {
+                jqTds[4].innerHTML = '<select name="role_id" class="form-control input-small">' +
+                    '<option value="1">Super Admin</option>' +
+                    '<option value="2">Admin</option>' +
+                    '</select>';
+            }else{
+                jqTds[4].innerHTML = '<select name="role_id" class="form-control input-small">' +
+                    '<option value="2">Admin</option>' +
+                    '<option value="1">Super Admin</option>' +
+                    '</select>';
+            }
+            //jqTds[5].innerHTML = '<a class="edit" href="">Save</a>';
+            jqTds[5].innerHTML = '<input type="submit" value="Confirm">';
+            jqTds[6].innerHTML = '<a class="cancel" href="">Cancel</a>';
         }
 
         function saveRow(oTable, nRow) {
@@ -30,8 +43,9 @@ var TableEditable = function () {
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
             oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
-            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 5, false);
+            oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 5, false);
+            oTable.fnUpdate('<a class="delete" href="">Delete</a>', nRow, 6, false);
             oTable.fnDraw();
         }
 
@@ -41,7 +55,8 @@ var TableEditable = function () {
             oTable.fnUpdate(jqInputs[1].value, nRow, 1, false);
             oTable.fnUpdate(jqInputs[2].value, nRow, 2, false);
             oTable.fnUpdate(jqInputs[3].value, nRow, 3, false);
-            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 4, false);
+            oTable.fnUpdate(jqInputs[4].value, nRow, 4, false);
+            oTable.fnUpdate('<a class="edit" href="">Edit</a>', nRow, 5, false);
             oTable.fnDraw();
         }
 
