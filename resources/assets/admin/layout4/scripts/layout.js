@@ -115,7 +115,7 @@ var Layout = function() {
             var slideOffeset = -200;
 
             if (sub.is(":visible")) {
-                $('.arrow', $(this)).removeClass("open");
+               $('.arrow', $(this)).removeClass("open");
                 $(this).parent().removeClass("open");
                 sub.slideUp(slideSpeed, function() {
                     if (autoScroll === true && $('body').hasClass('page-sidebar-closed') === false) {

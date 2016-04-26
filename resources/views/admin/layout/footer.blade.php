@@ -35,3 +35,6 @@
 </script>
 -->
 <!-- END PAGE LEVEL SCRIPTS -->
+<script type="text/javascript">
+	var APP_URL = {!! json_encode(url('/')) !!};
+</script>

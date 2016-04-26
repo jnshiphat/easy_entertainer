@@ -44,6 +44,11 @@
 						    @if(Session::has('error_message'))
 								<div class="alert alert-info">{{ Session::get('error_message') }}</div>
 						    @endif
+							@if($errors->has())
+								@foreach ($errors->all() as $error)
+								<div class="alert alert-info">{!! $error !!}</div>
+								@endforeach
+							@endif
 							<!-- BEGIN FORM-->
 							<form action="{{URL::to('admin/admincreate')}}" id="form_sample_1" class="form-horizontal" method="post">
 								<input type="hidden" value="{{csrf_token()}}" name="_token" />
@@ -69,7 +74,15 @@
 										* </span>
 										</label>
 										<div class="col-md-4">
-											<input type="password" name="password" data-required="1" class="form-control" required/>
+											<input type="password" id="password" name="password" data-required="1" class="form-control" required/>
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label col-md-3">Re-Type Password <span class="required">
+										* </span>
+										</label>
+										<div class="col-md-4">
+											<input type="password" id="password2" name="password2" data-required="1" class="form-control" required/>
 										</div>
 									</div>
 									<div class="form-group">
@@ -126,3 +139,28 @@
 					<!-- END VALIDATION STATES-->
 				</div>
 			</div>
+<script>
+
+	var password = document.getElementById("password");
+	var confirm_password = document.getElementById("password2");
+
+	function validatePassword(){
+
+		pass_val = password.value;
+		var match = /^(?=.*[A-Z])(?=.*[0-9]).*$/.test(pass_val);
+		console.log(pass_val);
+		console.log(match);
+		console.log(pass_val.length);
+		if (match==false || pass_val.length<6){
+			password.setCustomValidity("Use min 6 characters and min 1 capital and 1 number");
+		}else if(password.value != confirm_password.value) {
+			confirm_password.setCustomValidity("Passwords Don't Match");
+		} else {
+			confirm_password.setCustomValidity('');
+		}
+	}
+
+	password.onchange = validatePassword;
+	//password.onkeyup = validatePassword;
+	confirm_password.onkeyup = validatePassword;
+</script>

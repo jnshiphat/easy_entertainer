@@ -38,7 +38,7 @@
 <script src="{{URL::to('../resources/assets/global/scripts/metronic.js')}}" type="text/javascript"></script>
 <script src="{{URL::to('../resources/assets/admin/layout4/scripts/layout.js')}}" type="text/javascript"></script>
 <script src="{{URL::to('../resources/assets/admin/layout4/scripts/demo.js')}}" type="text/javascript"></script>
-<script src="{{URL::to('../resources/assets/admin/pages/scripts/table-editable.js')}}"></script>
+{{--<script src="{{URL::to('../resources/assets/admin/pages/scripts/adminlist-table.js')}}"></script>--}}
 <script>
 	jQuery(document).ready(function() {
 		Metronic.init(); // init metronic core components

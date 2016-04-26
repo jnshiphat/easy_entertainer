@@ -53,7 +53,7 @@
 			 Metronic.init(); // init metronic core components
 			 Layout.init(); // init current layout
 			 Demo.init(); // init demo features
-			 FormValidation.init();
+			// FormValidation.init();
 		 });
 	 </script>
 </body>

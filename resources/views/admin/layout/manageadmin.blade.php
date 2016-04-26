@@ -79,7 +79,7 @@
                         -->
                     </div>
                 </div>
-                <form action="{{URL::to('admin/adminoperations')}}" id="form_sample_1" class="form-horizontal" method="post">
+                <form id="form_sample_1" class="form-horizontal" method="post"> <!-- AJAX Form -->
                     <input type="hidden" value="{{csrf_token()}}" name="_token" />
                     <table class="table table-striped table-hover table-bordered" id="sample_editable_1">
                         <thead>
@@ -97,6 +97,9 @@
                                 Email
                             </th>
                             <th>
+                                Password
+                            </th>
+                            <th>
                                 Role
                             </th>
                             <th>
@@ -112,8 +115,7 @@
                         </thead>
                         <tbody>
                         @foreach($adminlogin as $key=>$value)
-                            <input type="hidden" value="{{$value->id}}" name="user_id">
-                                <tr>
+                                <tr data-id = "{{$value->id}}" id="{{$value->id}}">
                                     <td>
                                         {{$value->username}}
                                     </td>
@@ -127,10 +129,13 @@
                                         {{$value->email}}
                                     </td>
                                     <td>
+                                        {{$value->password}}
+                                    </td>
+                                    <td>
                                         @if($value->role_id === 1)
-                                        Super Admin
+                                            Super Admin
                                         @else
-                                        Admin
+                                            Admin
                                         @endif
                                     </td>
                                     <td>
@@ -139,7 +144,10 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a class="delete" href="javascript:;" onclick="deleteFunction()" data-id="{{$value->id}}">
+                                        <!-- <a class="delete" href="javascript:;">
+                                            Delete
+                                        </a> -->
+                                        <a class="getDelId btn default" onclick="delIdSend({{$value->id}})" data-toggle="modal" href="#delete-model">
                                             Delete
                                         </a>
                                     </td>
@@ -154,8 +162,55 @@
     </div>
 </div>
 <!-- END PAGE CONTENT -->
+
+<div class="modal fade" id="delete-model" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">Delete Confirmation</h4>
+            </div>
+            <div class="modal-body">
+               Are sure - You want to delete the admin?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn default" data-dismiss="modal">Close</button>
+                <!-- <button type="button" id="confirmDeleteButton" data-dismiss="modal" onclick="deleteTheRow()" class="btn blue">Sure, Delete!</button>
+                -->
+                <button type="button" id="confirmDeleteButton" data-dismiss="modal" class="btn blue">Sure, Delete!</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+
 <script>
-    function deleteFunction() {
-        alert('hillo');
+
+    function delIdSend(id) {
+        $('#confirmDeleteButton').attr("delId",id);
     }
+    /*
+    function deleteTheRow() {
+        var urlPar = $('#confirmDeleteButton').attr('delId');
+        var actionUrl = APP_URL+"/admin/deleteuser/"+urlPar;  //APP_URL global variable for base URL set in footer template
+        var token=$('input[name=_token]').val();
+        //console.log(oTable);
+
+        $.ajax({
+            type: "GET",
+            headers: {'X-CSRF-TOKEN': token},
+            url: actionUrl,
+            success: function (html) {
+                $('#'+urlPar).remove(); //Removing Row
+                $("#form_sample_1").load(location.href + " #form_sample_1");
+            }
+        })
+    }
+*/
+
+
 </script>
+{{--<script src="{{URL::to('../resources/assets/admin/pages/scripts/adminlist-table.js')}}"></script>--}}
+<script src="{{URL::to('../resources/assets/admin/pages/scripts/adminlist-table.js')}}"></script>

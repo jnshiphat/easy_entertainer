@@ -11,34 +11,69 @@
 			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
 			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
 			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
-				<li class="start active ">
+			@if($menuActive == 'dashboard')
+				<li class="start active">
+			@else
+				<li class="start">
+			@endif
 					<a href="{{URL::to('admin/admindashboard')}}">
 					<i class="icon-home"></i>
 					<span class="title">Dashboard</span>
 					</a>
 				</li>
+
 			@if (Session::get('role_id') === 1)
+				@if($menuActive == 'admincreate' || $menuActive == 'adminmanage')
+					<li class="active open">
+				@else
+					<li>
+				@endif
+						<a href="javascript:;">
+						<i class="icon-settings"></i>
+						<span class="title">Admins</span>
+						<span class="arrow "></span>
+						</a>
+						<ul class="sub-menu">
+						@if($menuActive == 'adminmanage')
+							<li class="active">
+						@else
+							<li>
+						@endif
+								<a href="{{URL::to('admin/adminmanage')}}">
+								Manage Admin</a>
+							</li>
+						@if($menuActive == 'admincreate')
+							<li class="active">
+						@else
+							<li>
+						@endif
+								<a href="{{URL::to('admin/admincreate')}}">
+								Create Admin</a>
+							</li>
+						</ul>
+					</li>
+			@endif
+				@if($menuActive == 'usermessage')
+				<li class="active open">
+				@else
 				<li>
+				@endif
 					<a href="javascript:;">
-					<i class="icon-settings"></i>
-					<span class="title">Admins</span>
-					<span class="arrow "></span>
+						<i class="icon-settings"></i>
+						<span class="title">Users/Visitors</span>
+						<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-						
+						@if($menuActive == 'usermessage')
+						<li class="active">
+						@else
 						<li>
-							<a href="{{URL::to('admin/adminmanage')}}">
-							Manage Admin</a>
-						</li>
-						<li>
-							<a href="{{URL::to('admin/admincreate')}}">
-							Create Admin</a>
+						@endif
+						<a href="{{URL::to('admin/usermessage')}}">
+							Messages</a>
 						</li>
 					</ul>
 				</li>
-			@endif
-
-
 				<li>
 					<a href="javascript:;">
 					<i class="icon-briefcase"></i>
